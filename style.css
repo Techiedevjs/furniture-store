@@ -1,0 +1,326 @@
+@font-face {
+    font-family: 'Jaapokki';
+    src: url(./Jaapokki-Regular.otf);
+}
+::-webkit-scrollbar {
+    width: 3px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: #FFFFFF;
+    border-radius: 5px;
+}
+:root{
+    --fontxsmall: 0.73vw;
+    --fontsmall: 0.83vw;
+    --fontmedium: 1vw;
+    --fontlarge: 1.2vw;
+    --fontxl: 1.4vw;
+    --padlittle: clamp(5px, 0.5vw, 25px);
+    --padmedium: clamp(10px, 0.7vw, 30px);
+    --padlarge: clamp(15px, 1vw, 100px);
+    --padlarger: clamp(20px, 1.2vw, 150px);
+    --gap: clamp(0.7rem, 0.8vw, 2rem);
+    --gaplarge: clamp(1rem, 1vw, 4rem);
+    --radius: clamp(12px, 0.8vw, 30px);
+}
+button{
+    border: none;
+    color: inherit;
+}
+.fxs{
+    font-size: var(--fontxsmall);
+}
+.fxxs{
+    font-size: calc(0.9 * var(--fontsmall));
+}
+.fs{
+    font-size: var(--fontsmall);
+}
+.fm{
+    font-size: var(--fontmedium);
+}
+.fl{
+    font-size: var(--fontlarge);
+}
+.pointer{
+    cursor: pointer;
+}
+.cap{
+    text-transform: capitalize;
+}
+.upper{
+    text-transform: uppercase;
+}
+.inter{
+    font-family: Inter;
+}
+.flexsmall{
+    display: flex;
+    gap: var(--gap);
+    align-items: center;
+}
+.flexlittle{
+    display: flex;
+    gap: calc(0.5 * var(--gap));
+    align-items: center;
+}
+.bold{
+    font-weight: 700;
+}
+.semibold{
+    font-weight: 600;
+}
+.center{
+    text-align: center;
+}
+.hidetask{
+    opacity: 0;
+    z-index: -100;
+    pointer-events: none;
+    position: absolute;
+}
+.hidden{
+    display: none;
+}
+.hide-element{
+    opacity: 0;
+    position: absolute !important;
+    z-index: -10;
+    pointer-events: none;
+    transform: translateY(20vw);
+}
+.hide-display{
+    opacity: 0;
+    position: absolute;
+    z-index: -100;
+    pointer-events: none;
+    transform: translateY(20vh);
+}
+.hide{
+    opacity: 0;
+    position: absolute;
+    z-index: -100;
+    pointer-events: none;
+    transform: translateX(10vw) !important;
+}
+.hideprofile{
+    opacity: 0;
+    position: absolute;
+    pointer-events: none;
+    transform: translateX(10vw) !important;
+}
+*{
+    padding: 0;
+    margin: 0;
+    line-height: normal;
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+    font-family: 'Outfit', sans-serif;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    font-style: normal;
+}
+body{
+    background: url(images/background.png);
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+.escape{
+    position: absolute;
+    bottom: calc(3 * var(--gaplarge));
+    right: calc(3 * var(--gaplarge));
+    z-index: 200;
+    font-size: calc( 0.7 * var(--fontsmall));
+    color: rgba(255, 255, 255, 0.65);
+}
+.escape button{
+    padding: calc(0.7 * var(--padlittle));
+    color: black;
+    font-weight: 600;
+    margin-right:calc(0.8 * var(--gap));
+    border-radius: calc(0.5 * var(--radius));
+    border: 0;  
+    font-size: calc( 0.7 * var(--fontsmall));
+}
+.display{
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+/* HOME PAGE */
+.container{
+    width: 70vw;
+    aspect-ratio: 1920/1080;
+    background-color: #E4E0DA;
+    color: #4A4A4A;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+.container header{
+    padding: var(--padmedium);
+    text-align: center;
+    position: relative;
+    background-color: white;
+}
+.container header svg{
+    height: var(--fontsmall);
+    position: absolute;
+    left: var(--padmedium);
+}
+.container nav{
+    color: #4A4A4A;
+    font-size: var(--fontxl);
+    padding: 1vw 2vw;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    height: 3.8vw;
+}
+.absnav{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.container nav div:first-child{
+    color: #4A4A4A;
+    font-family: 'Jaapokki', sans-serif;
+    font-size: 1.458vw;
+    font-weight: 400;
+    letter-spacing: 7.7px;
+}
+.container nav div:nth-child(2) p{
+    padding: calc(0.5 * var(--padlittle)) var(--padmedium);
+    cursor: pointer;
+    letter-spacing: 1.84px;
+}
+.container nav div:nth-child(2) p:hover{
+    background-color:  #B39ABD;
+    border-radius: 1vw;
+    color: #2B2B2B;
+}
+.container nav .pressed{
+    border-radius: 1vw;
+    background: #C1B0C8;
+}
+.container nav div:nth-child(3){
+    letter-spacing: 1.84px;
+}
+.container nav div:nth-child(3) svg{
+    width: 1.67vw;
+    aspect-ratio: 1/1;
+}
+.container main{
+    height: 39.16vw;
+    position: relative;
+    overflow: hidden;
+}
+.home{
+    width: 100%;
+    height: 100%;
+}
+.homepage{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.heroimage{
+    /* height: 39.16vw; */
+    /* overflow: hidden; */
+}
+ .heroimage img{
+    width: 44.6vw;
+    height: 40vw;
+    bottom: -10%;
+    left: 32vw;
+    position: absolute;
+    object-fit: contain;
+}
+.homepage section:first-child{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3.6vw;
+}
+.homepage button{
+    border-radius: 2vw;
+    background: #C1B0C8;
+    padding: 0.83vw 1.3vw;
+    width: max-content;
+    border: none;
+    letter-spacing: 1.9px;
+    font-size: var(--fontmedium);
+}
+.homepage button svg{
+    width: 1vw;
+    aspect-ratio: 19/13;
+    margin: 0.26vw 0;
+}
+.homepage button:hover{
+    background: #B39ABD;
+}
+.homepage h1{
+    color: #567367;
+    font-size: 2.7vw;
+    font-weight: 700;
+    letter-spacing: 4.94px;
+}
+.homepage section:first-child p{
+    color: #716E6A;
+    text-overflow: ellipsis;
+    font-size: 1.875vw;
+    font-weight: 400;
+    letter-spacing: 0.9px;
+}
+.container main .profile-section{
+    background-color: white;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    right: 0;
+    width: 21vw;
+    z-index: 10;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.container main .profile-section .relative{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 1.7vw;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap);
+}
+.page{
+    padding: 1.5vw 4.5vw 0 4.5vw;
+}
+.pageheader{
+    color: #716E6A;
+    font-size: 1.875vw;
+    font-weight: 700;
+    letter-spacing: 3.42px;
+}
+.special{
+    position: relative;
+}
+@media screen and (min-width: 1920px) {
+    ::-webkit-scrollbar {
+        width: 4.5px;
+    }
+}

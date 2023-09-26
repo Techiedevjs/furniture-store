@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Helix-Ember</title>
+</head>
+<body>
+    <div class="display hide-display">
+        <div class="escape">
+            <button>Esc</button> 
+            <span class="grey ls mediumbold">BACK</span>
+        </div>
+        <div class="container">
+            <header class="inter fs bold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="59" height="13" viewBox="0 0 59 13" fill="none">
+                    <circle cx="6.5" cy="6.5" r="6.5" fill="#EC5E41"/>
+                    <circle cx="29.5" cy="6.5" r="6.5" fill="#F0C000"/>
+                    <circle cx="52.5" cy="6.5" r="6.5" fill="#4CC38A"/>
+                </svg>
+                Ember Furniture Store
+            </header>
+            <nav>
+                <div class="logo">EMBER</div>
+                <div class="flexsmall absnav">
+                    <p class="fs bold home-tab pressed">HOME</p>
+                    <p class="fs bold furniture-tab">FURNITURE</p>
+                    <p class="fs bold decoration-tab">DECORATIONS</p>
+                    <p class="fs bold set-tab">SETS</p>
+                </div>
+                <div class="flexlittle" onclick="openProfileMenu()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <path d="M27 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V25C3 25.5304 3.21071 26.0391 3.58579 26.4142C3.96086 26.7893 4.46957 27 5 27H27C27.5304 27 28.0391 26.7893 28.4142 26.4142C28.7893 26.0391 29 25.5304 29 25V7C29 6.46957 28.7893 5.96086 28.4142 5.58579C28.0391 5.21071 27.5304 5 27 5ZM16 20C14.4092 19.9983 12.884 19.3657 11.7592 18.2408C10.6343 17.116 10.0017 15.5908 10 14C10 13.7348 10.1054 13.4804 10.2929 13.2929C10.4804 13.1054 10.7348 13 11 13C11.2652 13 11.5196 13.1054 11.7071 13.2929C11.8946 13.4804 12 13.7348 12 14C12 15.0609 12.4214 16.0783 13.1716 16.8284C13.9217 17.5786 14.9391 18 16 18C17.0609 18 18.0783 17.5786 18.8284 16.8284C19.5786 16.0783 20 15.0609 20 14C20 13.7348 20.1054 13.4804 20.2929 13.2929C20.4804 13.1054 20.7348 13 21 13C21.2652 13 21.5196 13.1054 21.7071 13.2929C21.8946 13.4804 22 13.7348 22 14C21.9983 15.5908 21.3657 17.116 20.2408 18.2408C19.116 19.3657 17.5908 19.9983 16 20ZM5 9V7H27V9H5Z" fill="#567367"/>
+                    </svg>
+                    <p class="fs bold">$12,789</p>
+                </div>
+            </nav>
+            <main>
+                <div class="home">
+                    <div class="homepage page">
+                        <section>
+                            <div>
+                                <h1>WELCOME TO EMBER</h1>
+                                <p>Where Style Ignites Your Space</p>
+                            </div>
+                            <button class="pointer flexlittle bold" onclick="showSpecialOffers()">
+                                SPECIAL OFFERS
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="13" viewBox="0 0 19 13" fill="none">
+                                    <path d="M9.50002 12.8333L19 3.33334L16.625 0.958336L9.49998 8.08338L2.37499 0.958386L-4.15256e-07 3.33339L9.50002 12.8333Z" fill="#4A4A4A"/>
+                                </svg>
+                            </button>
+                        </section>
+                        <section class="heroimage">
+                            <img src="images/hero.png" alt="hero image">
+                        </section>
+                    </div>
+                    <div class="special hide-element page">
+                        <section class="special-cont">
+                            <h2 class="center pageheader">  SPECIAL OFFERS </h2>
+                            <section class="special-jobs"></section>
+                        </section>
+                    </div>
+                </div>
+                
+                <div class="furniture hide-element page">
+                    <section class="furniture-cont">
+                        <h2 class="center pageheader">FURNITURE</h2>
+                    </section>
+                </div>
+                <div class="decoration hide-element page">
+                    <div class="decoration-cont ">
+                        <h2 class="center pageheader"> DECORATION </h2>
+                        <section class="decorations"></section>
+                    </div>
+                </div>
+                <!-- PROFILE SECTION -->
+                <section class="profile-section hideprofile">
+                    <div class="relative">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="close-profile-icon" onclick="closeProfileMenu()" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                            <path opacity="0.3" d="M20.3168 2.80602L18.2155 0.704727L10.5107 8.40945L2.80602 0.704727L0.704726 2.80602L8.40945 10.5107L0.704727 18.2155L2.80602 20.3168L10.5107 12.612L18.2155 20.3168L20.3168 18.2155L12.612 10.5107L20.3168 2.80602Z" fill="#4A4A4A"/>
+                        </svg>
+                        <h2>Welcome, <span class="profile-name"></span></h2>
+                        <section class="career-info">
+                            <p class="fxs flexsmall">Expertise <span id="expertise"></span></p>
+                            <p class="fxs flexsmall">Jobs completed <span class="completed-jobs"></span></p>
+                        </section>
+                        <section class="center">
+                            <h3>YOUR RATING</h3>
+                            <img src="" alt="rating" class="profile-rating">
+                        </section>
+                        <section>
+                            <h3>CURRENT JOB</h3>
+                            <section class="current-jobs">
+    
+                            </section>
+                        </section>
+                    </div>
+                </section>
+                <!-- ADDED TO FAVORITES -->
+                <section class="added-to-favorites hideprofile">
+                    <article class="flexsmall">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="pointer" onclick="cancelAddToFavorites()" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                            <path opacity="0.3" d="M13.8096 2.49588L13.9864 2.3191L13.8096 2.14233L12.4851 0.817843L12.3083 0.641066L12.1316 0.817843L7.4519 5.4975L2.77225 0.817843L2.59547 0.641066L2.41869 0.817843L1.09421 2.14233L0.917433 2.3191L1.09421 2.49588L5.77387 7.17554L1.09421 11.8552L0.917433 12.032L1.09421 12.2087L2.41869 13.5332L2.59547 13.71L2.77225 13.5332L7.4519 8.85357L12.1316 13.5332L12.3083 13.71L12.4851 13.5332L13.8096 12.2087L13.9864 12.032L13.8096 11.8552L9.12994 7.17554L13.8096 2.49588Z" fill="#4A4A4A" stroke="#4A4A4A" stroke-width="0.5"/>
+                        </svg>
+                        <img src="images/job1.png" alt="" class="jobimages">
+                        <div>
+                            <h4>Added To Favorites</h4>
+                            <p class="company-position cap"></p>
+                        </div>
+                    </article>
+                </section>
+                <!-- VIEW CURRENT -->
+                <section class="view-current hide-element">
+                    <section class="single">
+                        
+                    </section>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
