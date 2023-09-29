@@ -171,15 +171,19 @@ body{
     position: relative;
 }
 .container header{
-    padding: var(--padmedium);
     text-align: center;
     position: relative;
     background-color: white;
+    height: 2.3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .container header svg{
-    height: var(--fontsmall);
+    width: 3.07vw;
+    aspect-ratio: 59/19;
     position: absolute;
-    left: var(--padmedium);
+    left: 1vw;
 }
 .container nav{
     color: #4A4A4A;
@@ -218,15 +222,15 @@ body{
     border-radius: 1vw;
     background: #C1B0C8;
 }
-.container nav div:nth-child(3){
+.cart{
     letter-spacing: 1.84px;
+    cursor: pointer;
 }
-.container nav div:nth-child(3) svg{
+.cart svg{
     width: 1.67vw;
     aspect-ratio: 1/1;
 }
 .container main{
-    /* height: 38.16vw; */
     flex: 1;
     position: relative;
     overflow: hidden;
@@ -286,17 +290,17 @@ body{
     font-weight: 400;
     letter-spacing: 0.9px;
 }
-.container main .profile-section{
-    background-color: white;
+.shopping-cart{
+    background-color: #EBE8E4;
     position: absolute;
     height: 100%;
-    top: 0;
+    top: 2.3vw;
     right: 0;
     width: 21vw;
     z-index: 10;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.container main .profile-section .relative{
+.shopping-cart .relative{
     position: relative;
     height: 100%;
     width: 100%;
@@ -304,6 +308,19 @@ body{
     display: flex;
     flex-direction: column;
     gap: var(--gap);
+}
+.shopping-cart .cancel{
+    width: 1.25vw;
+    aspect-ratio: 1/1;
+    position: absolute;
+    top: 0.625vw;
+    left: 0.625vw;
+    cursor: pointer;
+}
+.shopping-cart .cart{
+    position: absolute;
+    right: 2vw;
+    top: 0.6vw;
 }
 .page{
     padding: 1.5vw 4.5vw 0 4.5vw;
@@ -317,7 +334,7 @@ body{
 }
 .special, .furniture,.decoration{
     /* position: relative; */
-    height: 32.5vw;
+    height: 32.8vw;
     overflow-y: scroll;
 }
 .specialoffers{
@@ -416,6 +433,9 @@ body{
     align-items: center;
     cursor: pointer;
 }
+.furniture-filter section h2:hover{
+    background: rgba(36, 104, 76, 0.20);
+}
 .furniture-filter section h2 svg{
     width: var(--fontsmall);
     height: 2px;
@@ -435,6 +455,88 @@ body{
     text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     color: #2F2F2F;
     text-decoration: underline;
+}
+.cart-items{
+    margin-top: 2vw;
+}
+.cart-item{
+    padding: 0.67vw;
+    display: flex;
+    gap: 1.15vw;
+    align-items: center;
+}
+.cart-item img{
+    width: 4.3vw;
+    aspect-ratio: 1/1;
+}
+.cart-item section{
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.3125vw;
+}
+.cart-item section svg{
+    width: 1vw;
+    aspect-ratio: 20/22;
+    cursor: pointer;
+}
+.cart-item p{
+    color: #212121;
+    font-size: var(--fontsmall);
+    font-weight: 500;
+    line-height: 114%;
+    letter-spacing: 0.4px;
+}
+.cart-item h5{
+    color: #567367;
+    text-overflow: ellipsis;
+    font-size: var(--fontmedium);
+    font-weight: 500;
+    line-height: 114%;
+    letter-spacing: 0.5px;
+    margin-top: 0.5vw;
+}
+.added-to-cart{
+    width: 19.5vw;
+    position: absolute;
+    top: var(--gap);
+    right: var(--gap);
+    padding: 0.67vw;
+    border-radius: var(--fontsmall);
+    background: white;
+    z-index: 15;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.added-to-cart .flexsmall{
+    gap: 1vw;
+}
+.added-to-cart h4{
+    color: #567367;
+    text-overflow: ellipsis;
+    font-size: var(--fontlarge);
+    font-weight: 500;
+    line-height: 114%;
+    letter-spacing: 0.6px;
+    margin-bottom: 0.5vw;
+}
+.added-to-cart p{
+    color: #212121;
+    font-size: var(--fontsmall);
+    font-weight: 500;
+    line-height: 114%; /* 18.24px */
+    letter-spacing: 0.4px;
+}
+.added-to-cart svg{
+    position: absolute;
+    width: var(--fontsmall);
+    aspect-ratio: 1/1;
+    top: 0.5vw;
+    right: 0.5vw;
+}
+.added-to-cart img{
+    width: 4.3vw;
+    aspect-ratio: 1/1;
 }
 @media screen and (min-width: 1920px) {
     ::-webkit-scrollbar {
