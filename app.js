@@ -110,31 +110,11 @@ const profile = {
 document.querySelectorAll('.profile-name').forEach(elem => {
     elem.innerHTML = profile.firstName + " " + profile.lastName;
 })
-
-const loadJobProfileData = () => {
-    document.querySelectorAll('.profile-rating').forEach(elem => {
-        elem.src = `images/${profile.rating}-rating.png`;
-    })
-    document.querySelector('#expertise').innerHTML = profile.expertise;
-    document.querySelectorAll('.completed-jobs').forEach((elem) => {
-        elem.innerHTML = profile.jobsCompleted;
-    })
-    document.querySelectorAll('.total-earnings').forEach(elem => {
-        elem.innerHTML = '$' + profile.totalEarnings
-    })
-    document.querySelectorAll('.average-job-earnings').forEach(elem => {
-        elem.innerHTML = '$' + profile.averageJobEarnings
-    })
-    document.querySelectorAll('.expertise-categories').forEach(elem => {
-        elem.innerHTML = profile.expertiseCategories
-    })
-}
-loadJobProfileData();
 const openProfileMenu = () => {
-    document.querySelector('.profile-section').classList.remove('hideprofile')
+    document.querySelector('.shopping-cart').classList.remove('hideprofile')
 }
 const closeProfileMenu = () => {
-    document.querySelector('.profile-section').classList.add('hideprofile')
+    document.querySelector('.shopping-cart').classList.add('hideprofile')
 }
 const pages = [
     {
@@ -244,6 +224,10 @@ const pushDecorations = (data) => {
             `
         }
     })
+}
+
+const addToCart = (id) => {
+    
 }
 pushSpecialOffers(allItems)
 pushFurnitures(allItems)
