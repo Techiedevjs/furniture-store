@@ -5,8 +5,10 @@ let allItems = [
         discountedPrice: 15970,
         imageUrl: "images/light2.png",
         name: "Rattan Ceiling Light Shade",
-        category: "furniture",
-        subCategory: ""
+        category: "",
+        type: "furniture",
+        subCategory: "",
+        specialOffer: true
     },
     {
         id: "erer89",
@@ -14,7 +16,8 @@ let allItems = [
         discountedPrice: 10000,
         imageUrl: "images/bed.png",
         name: "Madara Retro Oak and Rattan Bed",
-        category: "furniture",
+        category: "",
+        type: "furniture",
         subCategory: ""
     },
     {
@@ -23,8 +26,10 @@ let allItems = [
         discountedPrice: 23450,
         imageUrl: "images/table1.png",
         name: "Set of 2 Louve Nesting Tables",
-        category: "furniture",
-        subCategory: ""
+        category: "",
+        type: "furniture",
+        subCategory: "",
+        specialOffer: true
     },
     {
         id: "poi7e",
@@ -32,7 +37,8 @@ let allItems = [
         discountedPrice: 700,
         imageUrl: "images/painting1.png",
         name: "Balsac Paris Painting",
-        category: "decoration",
+        category: "",
+        type: "decoration",
         subCategory: ""
     },
     {
@@ -41,7 +47,8 @@ let allItems = [
         discountedPrice: 1900,
         imageUrl: "images/painting2.png",
         name: "mona lisa",
-        category: "furniture",
+        category: "",
+        type: "furniture",
         subCategory: ""
     },
     {
@@ -50,8 +57,10 @@ let allItems = [
         discountedPrice: 1900,
         imageUrl: "images/painting2.png",
         name: "mona lisa",
-        category: "decoration",
-        subCategory: ""
+        category: "",
+        type: "decoration",
+        subCategory: "",
+        specialOffer: true
     },
     {
         id: "uoi73",
@@ -59,7 +68,8 @@ let allItems = [
         discountedPrice: 1900,
         imageUrl: "images/chair2.png",
         name: "mona lisa",
-        category: "furniture",
+        category: "",
+        type: "furniture",
         subCategory: ""
     },
     {
@@ -68,8 +78,10 @@ let allItems = [
         discountedPrice: 1900,
         imageUrl: "images/painting2.png",
         name: "mona lisa",
-        category: "decoration",
-        subCategory: ""
+        category: "",
+        type: "decoration",
+        subCategory: "",
+        specialOffer: true
     },
     {
         id: "we34r",
@@ -77,7 +89,8 @@ let allItems = [
         discountedPrice: 1900,
         imageUrl: "images/shelf2.png",
         name: "mona lisa",
-        category: "furniture",
+        category: "",
+        type: "furniture",
         subCategory: ""
     },
     {
@@ -86,8 +99,10 @@ let allItems = [
         discountedPrice: 1900,
         imageUrl: "images/painting2.png",
         name: "mona lisa",
-        category: "decoration",
-        subCategory: ""
+        category: "",
+        type: "decoration",
+        subCategory: "",
+        specialOffer: true
     },
 ]
 
@@ -111,10 +126,10 @@ document.querySelectorAll('.profile-name').forEach(elem => {
     elem.innerHTML = profile.firstName + " " + profile.lastName;
 })
 const openProfileMenu = () => {
-    document.querySelector('.shopping-cart').classList.remove('hideprofile')
+    document.querySelector('.shopping-cart').classList.remove('hide-element')
 }
 const closeProfileMenu = () => {
-    document.querySelector('.shopping-cart').classList.add('hideprofile')
+    document.querySelector('.shopping-cart').classList.add('hide-element')
 }
 const pages = [
     {
@@ -157,6 +172,19 @@ pages.map((p) => {
         closeProfileMenu()
     })
 })
+const toggleFilter = (elem) => {
+    document.querySelector(`.${elem}-filters`).classList.toggle('hidefilter');
+    document.querySelector(`.${elem} .minus`).classList.toggle('hide');
+    document.querySelector(`.${elem} .plus`).classList.toggle('hide');
+}
+const showSearch = () => {
+    document.querySelector('.search').classList.add('showsearch')
+    document.querySelector('.search .flexlittle').classList.remove('hide')
+}
+const cancelSearch = () => {
+    document.querySelector('.search').classList.remove('showsearch')
+    document.querySelector('.search .flexlittle').classList.add('hide')
+}
 const showSpecialOffers = () => {
     document.querySelector('.special').classList.remove('hide-element')
     document.querySelector('.homepage').classList.add('hide-element')
@@ -165,28 +193,30 @@ const showSpecialOffers = () => {
 const pushSpecialOffers = (data) => {
     document.querySelector('.specialoffers').innerHTML = "";
     data.map((item) => {
-        const {id, imageUrl, name, discountedPrice, currentPrice} = item;
-        document.querySelector('.specialoffers').innerHTML += `
-        <section class="offer">
-            <div>
-                <h3>$ ${discountedPrice}</h3>
-                <h5>$ ${currentPrice}</h5>
-            </div>    
-            <div>
-                <img src=${imageUrl} alt="item" class="item-image">
-            </div>
-            <p>${name}</p>
-            <button>ADD TO CART</button>
-        </section>
-        `
+        const {id, imageUrl, specialOffer, name, discountedPrice, currentPrice} = item;
+        if(specialOffer){
+            document.querySelector('.specialoffers').innerHTML += `
+            <section class="offer">
+                <div>
+                    <h3>$ ${discountedPrice}</h3>
+                    <h5>$ ${currentPrice}</h5>
+                </div>    
+                <div>
+                    <img src=${imageUrl} alt="item" class="item-image">
+                </div>
+                <p>${name}</p>
+                <button onclick="addToCart('${id}')">ADD TO CART</button>
+            </section>
+            `
+        }
     })
 }
 
 const pushFurnitures = (data) => {
     document.querySelector('.furnitures').innerHTML = ""
     data.map((item) => {
-        const {id, imageUrl, name, discountedPrice, currentPrice, category} = item;
-        if(category === 'furniture'){
+        const {id, type, imageUrl, name, discountedPrice, currentPrice, category} = item;
+        if(type === 'furniture'){
             document.querySelector('.furnitures').innerHTML += `
             <section class="offer">
                 <div>
@@ -197,7 +227,7 @@ const pushFurnitures = (data) => {
                     <img src=${imageUrl} alt="item" class="item-image">
                 </div>
                 <p>${name}</p>
-                <button>ADD TO CART</button>
+                <button onclick="addToCart('${id}')">ADD TO CART</button>
             </section>
             `
         }
@@ -207,8 +237,8 @@ const pushFurnitures = (data) => {
 const pushDecorations = (data) => {
     document.querySelector('.decorations').innerHTML = ""
     data.map((item) => {
-        const {id, imageUrl, name, discountedPrice, currentPrice, category} = item;
-        if(category === 'decoration'){
+        const {id, type, imageUrl, name, discountedPrice, currentPrice, category} = item;
+        if(type === 'decoration'){
             document.querySelector('.decorations').innerHTML += `
             <section class="offer">
                 <div>
@@ -219,7 +249,7 @@ const pushDecorations = (data) => {
                     <img src=${imageUrl} alt="item" class="item-image">
                 </div>
                 <p>${name}</p>
-                <button>ADD TO CART</button>
+                <button onclick="addToCart('${id}')">ADD TO CART</button>
             </section>
             `
         }
@@ -227,7 +257,10 @@ const pushDecorations = (data) => {
 }
 
 const addToCart = (id) => {
-    
+    document.querySelector('.added-to-cart').classList.remove('hideprofile');
+}
+const cancelCartPopUp = () => {
+    document.querySelector('.added-to-cart').classList.add('hideprofile');
 }
 pushSpecialOffers(allItems)
 pushFurnitures(allItems)
