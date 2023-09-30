@@ -27,11 +27,26 @@
             </header>
             <nav>
                 <div class="logo">EMBER</div>
-                <div class="flexsmall absnav">
-                    <p class="fs bold home-tab pressed">HOME</p>
-                    <p class="fs bold furniture-tab">FURNITURE</p>
-                    <p class="fs bold decoration-tab">DECORATIONS</p>
-                    <p class="fs bold set-tab">SETS</p>
+                <div class="absnav">
+                    <section class="flexsmall">
+                        <div class="search">
+                            <div class="searchicon" onclick="showSearch()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="32" viewBox="0 0 35 32" fill="none">
+                                    <path d="M16.6528 6.2179C11.6883 6.2179 7.6499 10.0324 7.6499 14.7216C7.6499 19.4107 11.6883 23.2252 16.6528 23.2252C18.1704 23.2252 19.6623 22.8851 20.9227 22.2291C21.0237 22.3438 21.1356 22.4496 21.2571 22.5449L23.8293 24.9745C24.0669 25.227 24.3565 25.4309 24.6805 25.5738C25.0044 25.7167 25.3559 25.7955 25.7133 25.8054C26.0707 25.8154 26.4265 25.7562 26.7588 25.6316C27.0911 25.5069 27.3929 25.3195 27.6457 25.0807C27.8986 24.8419 28.097 24.5568 28.229 24.2429C28.3609 23.929 28.4236 23.593 28.4131 23.2554C28.4025 22.9178 28.3191 22.5858 28.1678 22.2798C28.0165 21.9738 27.8006 21.7002 27.5334 21.4759L24.9611 19.0463C24.8358 18.9279 24.6979 18.822 24.5496 18.7304C25.2441 17.5399 25.6814 16.155 25.6814 14.6973C25.6814 10.0081 21.6429 6.1936 16.6785 6.1936L16.6528 6.2179ZM16.6528 8.64752C20.2282 8.64752 23.0834 11.3444 23.0834 14.7216C23.0834 16.3251 22.4661 17.8072 21.3857 18.9005C21.36 18.9248 21.3343 18.9491 21.3085 18.9734C21.187 19.0687 21.0751 19.1745 20.9741 19.2892C19.8424 20.2611 18.299 20.8199 16.6271 20.8199C13.0516 20.8199 10.1964 18.123 10.1964 14.7459C10.1964 11.3687 13.0516 8.67181 16.6271 8.67181L16.6528 8.64752Z" fill="#567367"/>
+                                </svg>
+                            </div>
+                            <div class="flexlittle hide">
+                                <input type="text" name="" id="" placeholder="Search...">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="cancel" onclick="cancelSearch()" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path opacity="0.3" d="M15.094 2.21313L13.5483 0.667458L7.88086 6.33492L2.2134 0.667458L0.667731 2.21313L6.33519 7.88059L0.667732 13.548L2.2134 15.0937L7.88086 9.42626L13.5483 15.0937L15.094 13.548L9.42653 7.88059L15.094 2.21313Z" fill="#4A4A4A"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="fs bold home-tab pressed">HOME</p>
+                        <p class="fs bold furniture-tab">FURNITURE</p>
+                        <p class="fs bold decoration-tab">DECORATIONS</p>
+                        <p class="fs bold set-tab">SETS</p>
+                    </section>
                 </div>
                 <div class="flexlittle cart" onclick="openProfileMenu()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -73,45 +88,60 @@
                         <div class="furniture-grid">
                             <div class="furniture-filter">
                                 <section>
-                                    <h2>
+                                    <h2 class="furniture-living-room" onclick="toggleFilter('furniture-living-room')">
                                         LIVING ROOM 
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="3" viewBox="0 0 17 3" fill="none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="minus" width="17" height="3" viewBox="0 0 17 3" fill="none">
                                             <path d="M17 2.52001L17 0.480011L0 0.48001L-8.91712e-08 2.52001L17 2.52001Z" fill="#567367"/>
                                         </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="plus hide" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                            <path d="M15.6094 9.43657L15.6094 7.56347L8.74134 7.56347L8.74134 0.695434L6.86824 0.695434L6.86824 7.56347L0.000199971 7.56347L0.00019989 9.43657L6.86824 9.43657L6.86824 16.3046L8.74134 16.3046L8.74134 9.43657L15.6094 9.43657Z" fill="#567367"/>
+                                        </svg>
                                     </h2>
-                                    <p>COFFEE TABLE</p>
-                                    <p>SIDE TABLES</p>
-                                    <p>ARMCHAIRS</p>
-                                    <p>TV FURNITURE</p>
-                                    <p>SOFA</p>
-                                    <p>LIGHTING</p>
+                                    <div class="furniture-living-room-filters">
+                                        <p>COFFEE TABLE</p>
+                                        <p>SIDE TABLES</p>
+                                        <p>ARMCHAIRS</p>
+                                        <p>TV FURNITURE</p>
+                                        <p>SOFA</p>
+                                        <p>LIGHTING</p>
+                                    </div>
                                 </section>
                                 <section>
-                                    <h2>
+                                    <h2 class="furniture-dining-room" onclick="toggleFilter('furniture-dining-room')">
                                         DINING ROOM 
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="3" viewBox="0 0 17 3" fill="none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="minus" width="17" height="3" viewBox="0 0 17 3" fill="none">
                                             <path d="M17 2.52001L17 0.480011L0 0.48001L-8.91712e-08 2.52001L17 2.52001Z" fill="#567367"/>
                                         </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="plus hide" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                            <path d="M15.6094 9.43657L15.6094 7.56347L8.74134 7.56347L8.74134 0.695434L6.86824 0.695434L6.86824 7.56347L0.000199971 7.56347L0.00019989 9.43657L6.86824 9.43657L6.86824 16.3046L8.74134 16.3046L8.74134 9.43657L15.6094 9.43657Z" fill="#567367"/>
+                                        </svg>
                                     </h2>
-                                    <p>TABLE</p>
-                                    <p>CHAIRS</p>
-                                    <p>SHELF</p>
-                                    <p>CUPBOARD</p>
-                                    <p>LIGHTING</p>
+                                    <div class="furniture-dining-room-filters">
+                                        <p>TABLE</p>
+                                        <p>CHAIRS</p>
+                                        <p>SHELF</p>
+                                        <p>CUPBOARD</p>
+                                        <p>LIGHTING</p>
+                                    </div>
                                 </section>
                                 <section>
-                                    <h2>
+                                    <h2 class="furniture-bedroom" onclick="toggleFilter('furniture-bedroom')">
                                         BEDROOM 
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="3" viewBox="0 0 17 3" fill="none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="minus" width="17" height="3" viewBox="0 0 17 3" fill="none">
                                             <path d="M17 2.52001L17 0.480011L0 0.48001L-8.91712e-08 2.52001L17 2.52001Z" fill="#567367"/>
                                         </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="plus hide" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                            <path d="M15.6094 9.43657L15.6094 7.56347L8.74134 7.56347L8.74134 0.695434L6.86824 0.695434L6.86824 7.56347L0.000199971 7.56347L0.00019989 9.43657L6.86824 9.43657L6.86824 16.3046L8.74134 16.3046L8.74134 9.43657L15.6094 9.43657Z" fill="#567367"/>
+                                        </svg>
                                     </h2>
-                                    <p>BED</p>
-                                    <p>WARDROBE</p>
-                                    <p>ARMCHAIRS</p>
-                                    <p>DRAWER</p>
-                                    <p>SHELF</p>
-                                    <p>LIGHTING</p>
+                                    <div class="furniture-bedroom-filters" >
+                                        <p>BED</p>
+                                        <p>WARDROBE</p>
+                                        <p>ARMCHAIRS</p>
+                                        <p>DRAWER</p>
+                                        <p>SHELF</p>
+                                        <p>LIGHTING</p>
+                                    </div>
                                 </section>
                             </div>
                             <div class="furnitures"></div>
@@ -124,18 +154,23 @@
                         <div class="furniture-grid">
                             <div class="furniture-filter">
                                 <section>
-                                    <h2>
+                                    <h2 class="decoration-living-room" onclick="toggleFilter('decoration-living-room')">
                                         LIVING ROOM 
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="3" viewBox="0 0 17 3" fill="none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="minus" width="17" height="3" viewBox="0 0 17 3" fill="none">
                                             <path d="M17 2.52001L17 0.480011L0 0.48001L-8.91712e-08 2.52001L17 2.52001Z" fill="#567367"/>
                                         </svg>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="plus hide" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                            <path d="M15.6094 9.43657L15.6094 7.56347L8.74134 7.56347L8.74134 0.695434L6.86824 0.695434L6.86824 7.56347L0.000199971 7.56347L0.00019989 9.43657L6.86824 9.43657L6.86824 16.3046L8.74134 16.3046L8.74134 9.43657L15.6094 9.43657Z" fill="#567367"/>
+                                        </svg>
                                     </h2>
-                                    <p>TABLE ART</p>
-                                    <p>MIRROR</p>
-                                    <p>WALL DECOR</p>
-                                    <p>PLANTS</p>
-                                    <p>CARPET</p>
-                                    <p>PAINTINGS</p>
+                                    <div class="decoration-living-room-filters">
+                                        <p>TABLE ART</p>
+                                        <p>MIRROR</p>
+                                        <p>WALL DECOR</p>
+                                        <p>PLANTS</p>
+                                        <p>CARPET</p>
+                                        <p>PAINTINGS</p>
+                                    </div>
                                 </section>
                             </div>
                             <div class="decorations"></div>
@@ -143,9 +178,9 @@
                     </div>
                 </div>
                 <!-- ADDED TO CART -->
-                <section class="added-to-cart ">
+                <section class="added-to-cart hideprofile">
                     <article class="flexsmall">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="pointer" onclick="cancelAddToFavorites()" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="pointer" onclick="cancelCartPopUp()" width="15" height="15" viewBox="0 0 15 15" fill="none">
                             <path opacity="0.3" d="M13.8096 2.49588L13.9864 2.3191L13.8096 2.14233L12.4851 0.817843L12.3083 0.641066L12.1316 0.817843L7.4519 5.4975L2.77225 0.817843L2.59547 0.641066L2.41869 0.817843L1.09421 2.14233L0.917433 2.3191L1.09421 2.49588L5.77387 7.17554L1.09421 11.8552L0.917433 12.032L1.09421 12.2087L2.41869 13.5332L2.59547 13.71L2.77225 13.5332L7.4519 8.85357L12.1316 13.5332L12.3083 13.71L12.4851 13.5332L13.8096 12.2087L13.9864 12.032L13.8096 11.8552L9.12994 7.17554L13.8096 2.49588Z" fill="#4A4A4A" stroke="#4A4A4A" stroke-width="0.5"/>
                         </svg>
                         <img src="images/cabinet2.png" alt="" class="jobimages">
@@ -155,25 +190,13 @@
                         </div>
                     </article>
                 </section>
-                <!-- VIEW CURRENT -->
-                <section class="view-current hide-element">
-                    <section class="single">
-                        
-                    </section>
-                </section>
             </main>
             <!-- SHOPPING CART -->
-            <section class="shopping-cart hideprofile">
+            <section class="shopping-cart hide-element">
                 <div class="relative">
                     <svg xmlns="http://www.w3.org/2000/svg" class="cancel" onclick="closeProfileMenu()" width="21" height="21" viewBox="0 0 21 21" fill="none">
                         <path opacity="0.3" d="M20.3168 2.80602L18.2155 0.704727L10.5107 8.40945L2.80602 0.704727L0.704726 2.80602L8.40945 10.5107L0.704727 18.2155L2.80602 20.3168L10.5107 12.612L18.2155 20.3168L20.3168 18.2155L12.612 10.5107L20.3168 2.80602Z" fill="#4A4A4A"/>
                     </svg>
-                    <div class="flexlittle cart">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-                            <path d="M27 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V25C3 25.5304 3.21071 26.0391 3.58579 26.4142C3.96086 26.7893 4.46957 27 5 27H27C27.5304 27 28.0391 26.7893 28.4142 26.4142C28.7893 26.0391 29 25.5304 29 25V7C29 6.46957 28.7893 5.96086 28.4142 5.58579C28.0391 5.21071 27.5304 5 27 5ZM16 20C14.4092 19.9983 12.884 19.3657 11.7592 18.2408C10.6343 17.116 10.0017 15.5908 10 14C10 13.7348 10.1054 13.4804 10.2929 13.2929C10.4804 13.1054 10.7348 13 11 13C11.2652 13 11.5196 13.1054 11.7071 13.2929C11.8946 13.4804 12 13.7348 12 14C12 15.0609 12.4214 16.0783 13.1716 16.8284C13.9217 17.5786 14.9391 18 16 18C17.0609 18 18.0783 17.5786 18.8284 16.8284C19.5786 16.0783 20 15.0609 20 14C20 13.7348 20.1054 13.4804 20.2929 13.2929C20.4804 13.1054 20.7348 13 21 13C21.2652 13 21.5196 13.1054 21.7071 13.2929C21.8946 13.4804 22 13.7348 22 14C21.9983 15.5908 21.3657 17.116 20.2408 18.2408C19.116 19.3657 17.5908 19.9983 16 20ZM5 9V7H27V9H5Z" fill="#567367"/>
-                        </svg>
-                        <p class="fs bold">$12,789</p>
-                    </div>
                     <section class="cart-items">
                         <div class="cart-item">
                             <img src="images/cabinet1.png" alt="">
