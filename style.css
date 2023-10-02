@@ -3,7 +3,7 @@
     src: url(./Jaapokki-Regular.otf);
 }
 ::-webkit-scrollbar {
-    width: 3px;
+    width: 0;
 }
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
@@ -79,7 +79,6 @@ button{
 }
 .hidetask{
     opacity: 0;
-    z-index: -100;
     pointer-events: none;
     position: absolute;
 }
@@ -96,7 +95,6 @@ button{
 .hide-display{
     opacity: 0;
     position: absolute;
-    z-index: -100;
     pointer-events: none;
     transform: translateY(20vh);
 }
@@ -104,7 +102,6 @@ button{
     opacity: 0;
     display: none;
     /* position: absolute; */
-    z-index: -10;
     pointer-events: none;
     transform: translateX(-10px) !important;
 }
@@ -407,7 +404,6 @@ body{
     height: 4vw;
 }
 .special, .furniture,.decoration{
-    /* position: relative; */
     height: 32.8vw;
     overflow-y: scroll;
 }
@@ -488,18 +484,18 @@ body{
     grid-template-rows: max-content;
     gap: 0.7vw;
 }
-.furniture-filter section{
+.furniture-filters section{
     margin-bottom: 1.56vw;
     display: flex;
     flex-direction: column;
     gap: var(--fontsmall);
 }
-.furniture-filter section div{
+.furniture-filters section div{
     display: flex;
     flex-direction: column;
     gap: var(--fontsmall);
 }
-.furniture-filter section h2{
+.furniture-filters section h2{
     background: rgba(86, 115, 103, 0.10);
     color: #567367;
     font-size: 1.25vw;
@@ -512,32 +508,39 @@ body{
     align-items: center;
     cursor: pointer;
 }
-.furniture-filter section h2:hover{
+.furniture-filters section h2:hover{
     background: rgba(36, 104, 76, 0.20);
     color: #24684C;
 }
-.furniture-filter section h2:hover svg path{
+.furniture-filters section h2:hover svg path{
     fill: #24684C;
 }
-.furniture-filter section h2 .minus{
+.furniture-filters section h2 .minus{
     width: 0.88vw;
     height: 2px;
 }
-.furniture-filter section h2 .plus{
+.furniture-filters section h2 .plus{
     width: var(--fontsmall);
     height: var(--fontsmall);
 }
-.furniture-filter section p{
+.furniture-filters section p{
     padding-left: var(--fontmedium);
     color: #797979;
     font-size: 0.9375vw;
     font-weight: 600;
     letter-spacing: 2.07px;
     cursor: pointer;
-    width: 70%;
+    width: 80%;
     margin-left: 0.5vw;
+    display: flex;
+    align-items: center;
+    gap: var(--gap);
 }
-.furniture-filter section p:hover{
+.furniture-filters section p svg{
+    width: 0.9375vw;
+    aspect-ratio: 1/1;
+}
+.furniture-filters section p:hover{
     padding-left: 0;
     text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     color: #2F2F2F;
@@ -545,6 +548,8 @@ body{
 }
 .cart-items{
     margin-top: 2vw;
+    max-height: 32vw;
+    overflow-y: scroll;
 }
 .cart-item{
     padding: 0.67vw;
@@ -562,6 +567,9 @@ body{
     justify-content: space-between;
     align-items: center;
     gap: 0.3125vw;
+}
+.cart-item section div{
+    flex: 1;
 }
 .cart-item section svg{
     width: 1vw;
