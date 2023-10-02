@@ -5,9 +5,9 @@ let allItems = [
         discountedPrice: 15970,
         imageUrl: "images/light2.png",
         name: "Rattan Ceiling Light Shade",
-        category: "",
+        category: "livingroom",
         type: "furniture",
-        subCategory: "",
+        subCategory: "lighting",
         specialOffer: true
     },
     {
@@ -16,9 +16,9 @@ let allItems = [
         discountedPrice: 10000,
         imageUrl: "images/bed.png",
         name: "Madara Retro Oak and Rattan Bed",
-        category: "",
+        category: "bedroom",
         type: "furniture",
-        subCategory: ""
+        subCategory: "bed"
     },
     {
         id: "hu34j",
@@ -26,9 +26,9 @@ let allItems = [
         discountedPrice: 23450,
         imageUrl: "images/table1.png",
         name: "Set of 2 Louve Nesting Tables",
-        category: "",
+        category: "diningroom",
         type: "furniture",
-        subCategory: "",
+        subCategory: "table",
         specialOffer: true
     },
     {
@@ -37,19 +37,19 @@ let allItems = [
         discountedPrice: 700,
         imageUrl: "images/painting1.png",
         name: "Balsac Paris Painting",
-        category: "",
+        category: "livingroom",
         type: "decoration",
-        subCategory: ""
+        subCategory: "paintings"
     },
     {
         id: "ert45",
         currentPrice : 3400,
         discountedPrice: 1900,
-        imageUrl: "images/painting2.png",
+        imageUrl: "images/shelf2.png",
         name: "mona lisa",
-        category: "",
+        category: "bedroom",
         type: "furniture",
-        subCategory: ""
+        subCategory: "shelf"
     },
     {
         id: "456hj",
@@ -57,9 +57,9 @@ let allItems = [
         discountedPrice: 1900,
         imageUrl: "images/painting2.png",
         name: "mona lisa",
-        category: "",
+        category: "livingroom",
         type: "decoration",
-        subCategory: "",
+        subCategory: "paintings",
         specialOffer: true
     },
     {
@@ -68,19 +68,19 @@ let allItems = [
         discountedPrice: 1900,
         imageUrl: "images/chair2.png",
         name: "mona lisa",
-        category: "",
+        category: "diningroom",
         type: "furniture",
-        subCategory: ""
+        subCategory: "chairs"
     },
     {
         id: "uio83",
         currentPrice : 3400,
         discountedPrice: 1900,
-        imageUrl: "images/painting2.png",
+        imageUrl: "images/light4.png",
         name: "mona lisa",
-        category: "",
+        category: "livingroom",
         type: "decoration",
-        subCategory: "",
+        subCategory: "lighting",
         specialOffer: true
     },
     {
@@ -89,39 +89,23 @@ let allItems = [
         discountedPrice: 1900,
         imageUrl: "images/shelf2.png",
         name: "mona lisa",
-        category: "",
+        category: "bedroom",
         type: "furniture",
-        subCategory: ""
+        subCategory: "shelf"
     },
     {
         id: "ui89y",
         currentPrice : 3400,
         discountedPrice: 1900,
-        imageUrl: "images/painting2.png",
+        imageUrl: "images/cabinet2.png",
         name: "mona lisa",
-        category: "",
+        category: "diningroom",
         type: "decoration",
-        subCategory: "",
+        subCategory: "table",
         specialOffer: true
     },
 ]
 
-const profile = {
-    firstName: "Debbie",
-    lastName: "Sussie",
-    walletBalance: 3500,
-    rating: "C",
-    totalEarnings: 75450,
-    averageJobEarnings: 725,
-    jobsCompleted: 114,
-    expertise: "Backend Developer",
-    expertiseCategories: 3,
-    jobCompletion: {
-        incompleteJobs : 45,
-        onTimeJobs: 79,
-        lateJobs: 56
-    }
-}
 document.querySelectorAll('.profile-name').forEach(elem => {
     elem.innerHTML = profile.firstName + " " + profile.lastName;
 })
@@ -189,7 +173,6 @@ const showSpecialOffers = () => {
     document.querySelector('.special').classList.remove('hide-element')
     document.querySelector('.homepage').classList.add('hide-element')
 }
-
 const pushSpecialOffers = (data) => {
     document.querySelector('.specialoffers').innerHTML = "";
     data.map((item) => {
@@ -211,7 +194,6 @@ const pushSpecialOffers = (data) => {
         }
     })
 }
-
 const pushFurnitures = (data) => {
     document.querySelector('.furnitures').innerHTML = ""
     data.map((item) => {
@@ -233,7 +215,6 @@ const pushFurnitures = (data) => {
         }
     })
 }
-
 const pushDecorations = (data) => {
     document.querySelector('.decorations').innerHTML = ""
     data.map((item) => {
@@ -255,12 +236,74 @@ const pushDecorations = (data) => {
         }
     })
 }
-
+let cartItems = []
+const pushCartItems = (data) => {
+    document.querySelector('.cart-items').innerHTML = ""
+    data.map((item) => {
+        const {name, imageUrl, discountedPrice, id} = item
+        document.querySelector('.cart-items').innerHTML += `
+        <div class="cart-item item-${id}">
+            <img src="${imageUrl}" alt="item">
+            <section>
+                <div>
+                    <p class="cap">${name}</p>
+                    <h5>$ ${discountedPrice}</h5>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" onclick="removeFromCart('${id}')" width="20" height="22" viewBox="0 0 20 22" fill="none">
+                    <path opacity="0.5" d="M3.75 22C3.0625 22 2.47396 21.7606 1.98438 21.2819C1.49479 20.8032 1.25 20.2278 1.25 19.5556V3.66667H0V1.22222H6.25V0H13.75V1.22222H20V3.66667H18.75V19.5556C18.75 20.2278 18.5052 20.8032 18.0156 21.2819C17.526 21.7606 16.9375 22 16.25 22H3.75ZM6.25 17.1111H8.75V6.11111H6.25V17.1111ZM11.25 17.1111H13.75V6.11111H11.25V17.1111Z" fill="#878787"/>
+                </svg>
+            </section>
+        </div>
+        `
+    })
+}
+const removeFromCart = (id) => {
+    document.querySelector(`.item-${id}`).classList.add('hideprofile')
+    cartItems = cartItems.filter((item) => item.id !== id)
+    setTimeout(() => {
+        pushCartItems(cartItems);
+    }, 3000);
+}
+pushCartItems(cartItems)
 const addToCart = (id) => {
-    document.querySelector('.added-to-cart').classList.remove('hideprofile');
+    let selectedItem = allItems.filter((item) => item.id === id)
+    if(selectedItem[0]){
+        document.querySelector('.itemimage').src = selectedItem[0].imageUrl
+        document.querySelector('.itemname').textContent = selectedItem[0].name
+        document.querySelector('.added-to-cart').classList.remove('hideprofile');
+        cartItems.unshift(selectedItem[0])
+        pushCartItems(cartItems)
+        setTimeout(() => {
+            cancelCartPopUp()
+        }, 3000);
+    }
 }
 const cancelCartPopUp = () => {
     document.querySelector('.added-to-cart').classList.add('hideprofile');
+}
+const filterDecorationItems = (subcat, cat, elem) => {
+    let targetElement = document.querySelector(`.${elem}`);
+    document.querySelector(`.${elem} svg`).classList.remove('hide')
+    document.querySelectorAll('.decoration-filter').forEach((item) => {
+        if(item !== targetElement){
+            item.lastChild.previousSibling.classList.add('hide')
+        }
+    })
+    let decorations = allItems.filter((item) => item.type === 'decoration')
+    let filteredData = decorations.filter((item) => item.category === cat && item.subCategory === subcat)
+    pushDecorations(filteredData);
+}
+const filterFurnitureItems = (subcat, cat, elem) => {
+    let targetElement = document.querySelector(`.${elem}`);
+    document.querySelector(`.${elem} svg`).classList.remove('hide')
+    document.querySelectorAll('.furniture-filter').forEach((item) => {
+        if(item !== targetElement){
+            item.lastChild.previousSibling.classList.add('hide')
+        }
+    })
+    let furnitures = allItems.filter((item) => item.type === 'furniture')
+    let filteredData = furnitures.filter((item) => item.category === cat && item.subCategory === subcat)
+    pushFurnitures(filteredData);
 }
 pushSpecialOffers(allItems)
 pushFurnitures(allItems)
