@@ -86,7 +86,7 @@
                     <section class="furniture-cont">
                         <h2 class="center pageheader">FURNITURE</h2>
                         <div class="furniture-grid">
-                            <div class="furniture-filter">
+                            <div class="furniture-filters">
                                 <section>
                                     <h2 class="furniture-living-room" onclick="toggleFilter('furniture-living-room')">
                                         LIVING ROOM 
@@ -98,12 +98,36 @@
                                         </svg>
                                     </h2>
                                     <div class="furniture-living-room-filters">
-                                        <p>COFFEE TABLE</p>
-                                        <p>SIDE TABLES</p>
-                                        <p>ARMCHAIRS</p>
-                                        <p>TV FURNITURE</p>
-                                        <p>SOFA</p>
-                                        <p>LIGHTING</p>
+                                        <p class="furniture-filter flr-coffee-table" onclick="filterFurnitureItems('coffee-table', 'livingroom', 'flr-coffee-table')">COFFEE TABLE
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter flr-side-table" onclick="filterFurnitureItems('side-table', 'livingroom', 'flr-side-table')">SIDE TABLES
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter flr-armchairs" onclick="filterFurnitureItems('armchairs', 'livingroom', 'flr-armchairs')">ARMCHAIRS
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter flr-tv-furniture" onclick="filterFurnitureItems('tv-furniture', 'livingroom', 'flr-tv-furniture')">TV FURNITURE
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter flr-sofa" onclick="filterFurnitureItems('sofa', 'livingroom', 'flr-sofa')">SOFA
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter flr-lighting" onclick="filterFurnitureItems('lighting', 'livingroom', 'flr-lighting')">LIGHTING
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
                                     </div>
                                 </section>
                                 <section>
@@ -117,11 +141,31 @@
                                         </svg>
                                     </h2>
                                     <div class="furniture-dining-room-filters">
-                                        <p>TABLE</p>
-                                        <p>CHAIRS</p>
-                                        <p>SHELF</p>
-                                        <p>CUPBOARD</p>
-                                        <p>LIGHTING</p>
+                                        <p class="furniture-filter fdr-table" onclick="filterFurnitureItems('table', 'diningroom', 'fdr-table')">TABLE
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter fdr-chairs" onclick="filterFurnitureItems('chairs', 'diningroom', 'fdr-chairs')">CHAIRS
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter fdr-shelf" onclick="filterFurnitureItems('shelf', 'diningroom', 'fdr-shelf')">SHELF
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter fdr-cupboard" onclick="filterFurnitureItems('cupboard', 'diningroom', 'fdr-cupboard')">CUPBOARD
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter fdr-lighting" onclick="filterFurnitureItems('lighting', 'diningroom', 'fdr-lighting')">LIGHTING
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
                                     </div>
                                 </section>
                                 <section>
@@ -135,12 +179,36 @@
                                         </svg>
                                     </h2>
                                     <div class="furniture-bedroom-filters" >
-                                        <p>BED</p>
-                                        <p>WARDROBE</p>
-                                        <p>ARMCHAIRS</p>
-                                        <p>DRAWER</p>
-                                        <p>SHELF</p>
-                                        <p>LIGHTING</p>
+                                        <p class="furniture-filter fbr-bed" onclick="filterFurnitureItems('bed', 'bedroom', 'fbr-bed')">BED
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter fbr-wardrobe" onclick="filterFurnitureItems('wardrobe', 'bedroom', 'fbr-wardrobe')">WARDROBE
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter fbr-armchairs" onclick="filterFurnitureItems('armchairs', 'bedroom', 'fbr-armchairs')">ARMCHAIRS
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter fbr-drawer" onclick="filterFurnitureItems('drawer', 'bedroom', 'fbr-drawer')">DRAWER
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter fbr-shelf" onclick="filterFurnitureItems('shelf', 'bedroom', 'fbr-shelf')">SHELF
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="furniture-filter fbr-lighting" onclick="filterFurnitureItems('lighting', 'bedroom', 'fbr-lighting')">LIGHTING
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
                                     </div>
                                 </section>
                             </div>
@@ -152,7 +220,7 @@
                     <div class="decoration-cont ">
                         <h2 class="center pageheader"> DECORATION </h2>
                         <div class="furniture-grid">
-                            <div class="furniture-filter">
+                            <div class="furniture-filters">
                                 <section>
                                     <h2 class="decoration-living-room" onclick="toggleFilter('decoration-living-room')">
                                         LIVING ROOM 
@@ -164,12 +232,36 @@
                                         </svg>
                                     </h2>
                                     <div class="decoration-living-room-filters">
-                                        <p>TABLE ART</p>
-                                        <p>MIRROR</p>
-                                        <p>WALL DECOR</p>
-                                        <p>PLANTS</p>
-                                        <p>CARPET</p>
-                                        <p>PAINTINGS</p>
+                                        <p class="decoration-filter dlr-table-art" onclick="filterDecorationItems('table-art', 'livingroom', 'dlr-table-art')">TABLE ART 
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="decoration-filter dlr-mirror" onclick="filterDecorationItems('mirror', 'livingroom', 'dlr-mirror')">MIRROR
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="decoration-filter dlr-wall-decor" onclick="filterDecorationItems('wall-decor', 'livingroom', 'dlr-wall-decor')">WALL DECOR
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="decoration-filter dlr-plants" onclick="filterDecorationItems('plants', 'livingroom', 'dlr-plants')">PLANTS
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="decoration-filter dlr-carpet" onclick="filterDecorationItems('carpet', 'livingroom', 'dlr-carpet')">CARPET
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
+                                        <p class="decoration-filter dlr-paintings" onclick="filterDecorationItems('paintings', 'livingroom', 'dlr-paintings')">PAINTINGS
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="hide" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15.3907 2.57141L6.42857 11.5714L1.77614 6.985L0 8.78928L6.40335 15.2587L17.2737 4.38835L15.3907 2.57141Z" fill="#797979"/>
+                                            </svg>
+                                        </p>
                                     </div>
                                 </section>
                             </div>
@@ -183,10 +275,10 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="pointer" onclick="cancelCartPopUp()" width="15" height="15" viewBox="0 0 15 15" fill="none">
                             <path opacity="0.3" d="M13.8096 2.49588L13.9864 2.3191L13.8096 2.14233L12.4851 0.817843L12.3083 0.641066L12.1316 0.817843L7.4519 5.4975L2.77225 0.817843L2.59547 0.641066L2.41869 0.817843L1.09421 2.14233L0.917433 2.3191L1.09421 2.49588L5.77387 7.17554L1.09421 11.8552L0.917433 12.032L1.09421 12.2087L2.41869 13.5332L2.59547 13.71L2.77225 13.5332L7.4519 8.85357L12.1316 13.5332L12.3083 13.71L12.4851 13.5332L13.8096 12.2087L13.9864 12.032L13.8096 11.8552L9.12994 7.17554L13.8096 2.49588Z" fill="#4A4A4A" stroke="#4A4A4A" stroke-width="0.5"/>
                         </svg>
-                        <img src="images/cabinet2.png" alt="" class="jobimages">
+                        <img src="" alt="" class="itemimage">
                         <div>
                             <h4>Added To Your Cart</h4>
-                            <p class="company-position cap">bjjoo nnkk oooo nbjhj</p>
+                            <p class="itemname cap"></p>
                         </div>
                     </article>
                 </section>
@@ -197,32 +289,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="cancel" onclick="closeProfileMenu()" width="21" height="21" viewBox="0 0 21 21" fill="none">
                         <path opacity="0.3" d="M20.3168 2.80602L18.2155 0.704727L10.5107 8.40945L2.80602 0.704727L0.704726 2.80602L8.40945 10.5107L0.704727 18.2155L2.80602 20.3168L10.5107 12.612L18.2155 20.3168L20.3168 18.2155L12.612 10.5107L20.3168 2.80602Z" fill="#4A4A4A"/>
                     </svg>
-                    <section class="cart-items">
-                        <div class="cart-item">
-                            <img src="images/cabinet1.png" alt="">
-                            <section>
-                                <div>
-                                    <p>Round Rattan Wall Light</p>
-                                    <h5>$5 700</h5>
-                                </div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none">
-                                    <path opacity="0.5" d="M3.75 22C3.0625 22 2.47396 21.7606 1.98438 21.2819C1.49479 20.8032 1.25 20.2278 1.25 19.5556V3.66667H0V1.22222H6.25V0H13.75V1.22222H20V3.66667H18.75V19.5556C18.75 20.2278 18.5052 20.8032 18.0156 21.2819C17.526 21.7606 16.9375 22 16.25 22H3.75ZM6.25 17.1111H8.75V6.11111H6.25V17.1111ZM11.25 17.1111H13.75V6.11111H11.25V17.1111Z" fill="#878787"/>
-                                </svg>
-                            </section>
-                        </div>
-                        <div class="cart-item">
-                            <img src="images/cabinet1.png" alt="">
-                            <section>
-                                <div>
-                                    <p>Round Rattan Wall Light</p>
-                                    <h5>$5 700</h5>
-                                </div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="22" viewBox="0 0 20 22" fill="none">
-                                    <path opacity="0.5" d="M3.75 22C3.0625 22 2.47396 21.7606 1.98438 21.2819C1.49479 20.8032 1.25 20.2278 1.25 19.5556V3.66667H0V1.22222H6.25V0H13.75V1.22222H20V3.66667H18.75V19.5556C18.75 20.2278 18.5052 20.8032 18.0156 21.2819C17.526 21.7606 16.9375 22 16.25 22H3.75ZM6.25 17.1111H8.75V6.11111H6.25V17.1111ZM11.25 17.1111H13.75V6.11111H11.25V17.1111Z" fill="#878787"/>
-                                </svg>
-                            </section>
-                        </div>
-                    </section>
+                    <section class="cart-items"></section>
                 </div>
             </section>
         </div>
