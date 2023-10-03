@@ -36,7 +36,7 @@
                                 </svg>
                             </div>
                             <div class="flexlittle hide">
-                                <input type="text" name="" id="" placeholder="Search...">
+                                <input type="text" name="" id="searchitems" placeholder="Search..." oninput="searchItems()">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="cancel" onclick="cancelSearch()" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <path opacity="0.3" d="M15.094 2.21313L13.5483 0.667458L7.88086 6.33492L2.2134 0.667458L0.667731 2.21313L6.33519 7.88059L0.667732 13.548L2.2134 15.0937L7.88086 9.42626L13.5483 15.0937L15.094 13.548L9.42653 7.88059L15.094 2.21313Z" fill="#4A4A4A"/>
                                 </svg>
@@ -52,7 +52,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <path d="M27 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V25C3 25.5304 3.21071 26.0391 3.58579 26.4142C3.96086 26.7893 4.46957 27 5 27H27C27.5304 27 28.0391 26.7893 28.4142 26.4142C28.7893 26.0391 29 25.5304 29 25V7C29 6.46957 28.7893 5.96086 28.4142 5.58579C28.0391 5.21071 27.5304 5 27 5ZM16 20C14.4092 19.9983 12.884 19.3657 11.7592 18.2408C10.6343 17.116 10.0017 15.5908 10 14C10 13.7348 10.1054 13.4804 10.2929 13.2929C10.4804 13.1054 10.7348 13 11 13C11.2652 13 11.5196 13.1054 11.7071 13.2929C11.8946 13.4804 12 13.7348 12 14C12 15.0609 12.4214 16.0783 13.1716 16.8284C13.9217 17.5786 14.9391 18 16 18C17.0609 18 18.0783 17.5786 18.8284 16.8284C19.5786 16.0783 20 15.0609 20 14C20 13.7348 20.1054 13.4804 20.2929 13.2929C20.4804 13.1054 20.7348 13 21 13C21.2652 13 21.5196 13.1054 21.7071 13.2929C21.8946 13.4804 22 13.7348 22 14C21.9983 15.5908 21.3657 17.116 20.2408 18.2408C19.116 19.3657 17.5908 19.9983 16 20ZM5 9V7H27V9H5Z" fill="#567367"/>
                     </svg>
-                    <p class="fs bold">$12,789</p>
+                    <p class="fs bold carttotal"></p>
                 </div>
             </nav>
             <main>
@@ -84,7 +84,7 @@
                 
                 <div class="furniture hide-element page">
                     <section class="furniture-cont">
-                        <h2 class="center pageheader">FURNITURE</h2>
+                        <h2 class="center pageheader furniture-header upper">FURNITURE</h2>
                         <div class="furniture-grid">
                             <div class="furniture-filters">
                                 <section>
@@ -218,7 +218,7 @@
                 </div>
                 <div class="decoration hide-element page">
                     <div class="decoration-cont ">
-                        <h2 class="center pageheader"> DECORATION </h2>
+                        <h2 class="center pageheader decoration-header upper"> DECORATION </h2>
                         <div class="furniture-grid">
                             <div class="furniture-filters">
                                 <section>
@@ -286,10 +286,11 @@
             <!-- SHOPPING CART -->
             <section class="shopping-cart hide-element">
                 <div class="relative">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="cancel" onclick="closeProfileMenu()" width="21" height="21" viewBox="0 0 21 21" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="cancel" onclick="closeCart()" width="21" height="21" viewBox="0 0 21 21" fill="none">
                         <path opacity="0.3" d="M20.3168 2.80602L18.2155 0.704727L10.5107 8.40945L2.80602 0.704727L0.704726 2.80602L8.40945 10.5107L0.704727 18.2155L2.80602 20.3168L10.5107 12.612L18.2155 20.3168L20.3168 18.2155L12.612 10.5107L20.3168 2.80602Z" fill="#4A4A4A"/>
                     </svg>
                     <section class="cart-items"></section>
+                    <button class="hide" onclick="proceedToBuy()">PROCEED TO BUY</button>
                 </div>
             </section>
         </div>
