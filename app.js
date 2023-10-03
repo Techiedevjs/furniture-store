@@ -94,6 +94,16 @@ let allItems = [
         subCategory: "shelf"
     },
     {
+        id: "we34r",
+        currentPrice : 3400,
+        discountedPrice: 1900,
+        imageUrl: "images/shelf2.png",
+        name: "sitter",
+        category: "bedroom",
+        type: "furniture",
+        subCategory: "shelf"
+    },
+    {
         id: "ui89y",
         currentPrice : 3400,
         discountedPrice: 1900,
@@ -112,7 +122,7 @@ document.querySelectorAll('.profile-name').forEach(elem => {
 const openProfileMenu = () => {
     document.querySelector('.shopping-cart').classList.remove('hide-element')
 }
-const closeProfileMenu = () => {
+const closeCart = () => {
     document.querySelector('.shopping-cart').classList.add('hide-element')
 }
 const pages = [
@@ -132,18 +142,13 @@ const pages = [
         tab: document.querySelector('.decoration-tab')
     },
 ]
+let currentPage;
 pages.map((p) => {
     const {tab, name, page} = p
     tab.addEventListener('click', () => {
         if(name === 'home'){
             document.querySelector('.special').classList.add('hide-element')
             document.querySelector('.homepage').classList.remove('hide-element')
-        }
-        if(name === 'jobs'){
-            document.querySelector(`.furniture`).classList.remove('hide-element');
-        }
-        if(name === 'favorites'){
-            document.querySelector(`.decoration`).classList.remove('hide-element');
         }
         tab.classList.add('pressed');
         page.classList.remove('hide-element');
@@ -153,9 +158,34 @@ pages.map((p) => {
                 i.page.classList.add('hide-element');
             }
         })
-        closeProfileMenu()
+        document.querySelector('.search').classList.remove('hide')
+        document.querySelector('#searchitems').value = ""
+        currentFilter = {}
+        currentPage = name;
+        closeCart()
     })
 })
+const searchItems = () => {
+    let searchvalue = document.querySelector('#searchitems').value
+    let filtered;
+    if(currentPage === 'furniture'){
+        filtered = allItems.filter((item) => item.type === 'furniture' && item.name.toLowerCase().includes(searchvalue.toLowerCase()))
+        if(currentFilter.cat && currentFilter.subcat){
+            let filter = filtered.filter((item) => item.category === currentFilter.cat && item.subCategory === currentFilter.subcat)
+            pushFurnitures(filter);
+        } else {
+            pushFurnitures(filtered);
+        }
+    } else if(currentPage === 'decoration'){
+        filtered = allItems.filter((item) => item.type === 'decoration' && item.name.toLowerCase().includes(searchvalue.toLowerCase()))
+        if(currentFilter.cat && currentFilter.subcat){
+            let filter = filtered.filter((item) => item.category === currentFilter.cat && item.subCategory === currentFilter.subcat)
+            pushDecorations(filter);
+        } else {
+            pushDecorations(filtered);
+        }
+    }
+}
 const toggleFilter = (elem) => {
     document.querySelector(`.${elem}-filters`).classList.toggle('hidefilter');
     document.querySelector(`.${elem} .minus`).classList.toggle('hide');
@@ -164,6 +194,7 @@ const toggleFilter = (elem) => {
 const showSearch = () => {
     document.querySelector('.search').classList.add('showsearch')
     document.querySelector('.search .flexlittle').classList.remove('hide')
+    document.querySelector('#searchitems').focus()
 }
 const cancelSearch = () => {
     document.querySelector('.search').classList.remove('showsearch')
@@ -172,6 +203,7 @@ const cancelSearch = () => {
 const showSpecialOffers = () => {
     document.querySelector('.special').classList.remove('hide-element')
     document.querySelector('.homepage').classList.add('hide-element')
+    document.querySelector('.search').classList.add('hide')
 }
 const pushSpecialOffers = (data) => {
     document.querySelector('.specialoffers').innerHTML = "";
@@ -237,6 +269,13 @@ const pushDecorations = (data) => {
     })
 }
 let cartItems = []
+let cartTotal = 0
+const updateCartTotal = () => {
+    cartTotal = 0
+    cartItems.map((item) => cartTotal += item.discountedPrice)
+    document.querySelector('.carttotal').innerHTML = '$ ' + cartTotal
+}
+updateCartTotal()
 const pushCartItems = (data) => {
     document.querySelector('.cart-items').innerHTML = ""
     data.map((item) => {
@@ -260,9 +299,15 @@ const pushCartItems = (data) => {
 const removeFromCart = (id) => {
     document.querySelector(`.item-${id}`).classList.add('hideprofile')
     cartItems = cartItems.filter((item) => item.id !== id)
+    updateCartTotal(cartTotal)
     setTimeout(() => {
         pushCartItems(cartItems);
     }, 3000);
+    if(cartItems.length){
+        document.querySelector('.shopping-cart button').classList.remove('hide')
+    } else {
+        document.querySelector('.shopping-cart button').classList.add('hide')
+    }
 }
 pushCartItems(cartItems)
 const addToCart = (id) => {
@@ -271,44 +316,74 @@ const addToCart = (id) => {
         document.querySelector('.itemimage').src = selectedItem[0].imageUrl
         document.querySelector('.itemname').textContent = selectedItem[0].name
         document.querySelector('.added-to-cart').classList.remove('hideprofile');
-        cartItems.unshift(selectedItem[0])
+        cartItems.unshift(selectedItem[0]);
+        updateCartTotal()
         pushCartItems(cartItems)
         setTimeout(() => {
             cancelCartPopUp()
         }, 3000);
     }
+    if(cartItems.length){
+        document.querySelector('.shopping-cart button').classList.remove('hide')
+    } else {
+        document.querySelector('.shopping-cart button').classList.add('hide')
+    }
 }
 const cancelCartPopUp = () => {
     document.querySelector('.added-to-cart').classList.add('hideprofile');
 }
+const proceedToBuy = () => {
+    alert("Transaction in progress")
+    console.log(cartItems)
+    closeCart()
+}
+let currentFilter = {
+    cat: "",
+    subcat: "",
+    search: ""
+}
 const filterDecorationItems = (subcat, cat, elem) => {
     let targetElement = document.querySelector(`.${elem}`);
-    document.querySelector(`.${elem} svg`).classList.remove('hide')
-    document.querySelectorAll('.decoration-filter').forEach((item) => {
-        if(item !== targetElement){
-            item.lastChild.previousSibling.classList.add('hide')
-        }
-    })
-    let decorations = allItems.filter((item) => item.type === 'decoration')
-    let filteredData = decorations.filter((item) => item.category === cat && item.subCategory === subcat)
-    pushDecorations(filteredData);
+    if(!document.querySelector(`.${elem} svg`).classList.contains('hide')){
+        document.querySelector(`.${elem} svg`).classList.add('hide')
+        pushDecorations(allItems)
+        document.querySelector('.decoration-header').innerHTML = 'DECORATION'
+    } else {
+        document.querySelector(`.${elem} svg`).classList.remove('hide')
+        document.querySelector('.decoration-header').innerHTML = document.querySelector(`.${elem}`).textContent
+        document.querySelectorAll('.decoration-filter').forEach((item) => {
+            if(item !== targetElement){
+                item.lastChild.previousSibling.classList.add('hide')
+            }
+        })
+        currentFilter.cat = cat
+        currentFilter.subcat = subcat
+        searchItems()
+    }
 }
 const filterFurnitureItems = (subcat, cat, elem) => {
     let targetElement = document.querySelector(`.${elem}`);
-    document.querySelector(`.${elem} svg`).classList.remove('hide')
-    document.querySelectorAll('.furniture-filter').forEach((item) => {
-        if(item !== targetElement){
-            item.lastChild.previousSibling.classList.add('hide')
-        }
-    })
-    let furnitures = allItems.filter((item) => item.type === 'furniture')
-    let filteredData = furnitures.filter((item) => item.category === cat && item.subCategory === subcat)
-    pushFurnitures(filteredData);
+    if(!document.querySelector(`.${elem} svg`).classList.contains('hide')){
+        document.querySelector(`.${elem} svg`).classList.add('hide');
+        pushFurnitures(allItems);
+        document.querySelector('.furniture-header').innerHTML = 'FURNITURE'
+    } else {
+        document.querySelector(`.${elem} svg`).classList.remove('hide')
+        document.querySelector('.furniture-header').innerHTML = document.querySelector(`.${elem}`).textContent
+        document.querySelectorAll('.furniture-filter').forEach((item) => {
+            if(item !== targetElement){
+                item.lastChild.previousSibling.classList.add('hide')
+            }
+        })
+        currentFilter.cat = cat
+        currentFilter.subcat = subcat
+        searchItems()
+    }
 }
 pushSpecialOffers(allItems)
 pushFurnitures(allItems)
 pushDecorations(allItems)
-const toggleDisplay = () =>{
+const toggleDisplay = () => {
     document.querySelector('.display').classList.toggle('hide-display')
 }
 document.addEventListener('keydown', evt => {
