@@ -141,6 +141,11 @@ const pages = [
         page: document.querySelector('.decoration'),
         tab: document.querySelector('.decoration-tab')
     },
+    {
+        name: 'set',
+        page: document.querySelector('.set'),
+        tab: document.querySelector('.set-tab')
+    },
 ]
 let currentPage;
 pages.map((p) => {
