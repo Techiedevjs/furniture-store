@@ -141,7 +141,7 @@ body{
     position: absolute;
     bottom: calc(3 * var(--gaplarge));
     right: calc(3 * var(--gaplarge));
-    z-index: 200;
+    z-index: 20;
     font-size: calc( 0.7 * var(--fontsmall));
     color: rgba(255, 255, 255, 0.65);
 }
