@@ -88,7 +88,6 @@ button{
 .hide-element{
     opacity: 0;
     position: absolute !important;
-    z-index: -10;
     pointer-events: none;
     transform: translateY(30vw);
 }
@@ -108,9 +107,6 @@ button{
 .hidefilter{
     opacity: 0;
     pointer-events: none;
-    position: absolute;
-    z-index: -10;
-    transform: translateY(-10vh);
 }
 .hideprofile{
     opacity: 0;
@@ -308,6 +304,8 @@ body{
 .home{
     width: 100%;
     height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .homepage{
     display: grid;
@@ -417,8 +415,8 @@ body{
     letter-spacing: 3.42px;
     height: 4vw;
 }
-.special, .furniture,.decoration{
-    height: 32.8vw;
+.furniture,.decoration{
+    height: 33.2vw;
     overflow-y: scroll;
 }
 .specialoffers{
@@ -432,7 +430,8 @@ body{
     display: flex;
     flex-direction: column;
     gap: 0.5vw;
-    height: max-content;
+    height: 21.4vw;
+    overflow: hidden;
 }
 .offer h3{
     color: #716E6A;
@@ -461,18 +460,22 @@ body{
     line-height: 114%;
     letter-spacing: 0.5px;
     text-transform: capitalize;
-    height: 3.23vw;
+    min-height: 3.23vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: var(--fontsmall);
 }
 .item-image{
     width: 12.7vw;
     aspect-ratio: 1/1;
 }
+.offer:hover{
+    height: 23.59375vw;
+}
 .offer button{
     width: 8.95vw;
-    padding: 0.625vw;
+    aspect-ratio: 172/32;
     text-align: center;
     margin:0 auto 0.5vw auto;
     border-radius: 1vw;
@@ -481,11 +484,13 @@ body{
     font-weight: 700;
     letter-spacing: 1.84px;
     cursor: pointer;
-    display: none;
 }
-.offer:hover button{
-    display: block;
-    /* transition: all ease .3s; */
+.offer button:hover{
+    background: #B39ABD;
+    color: #2B2B2B;
+}
+.offer:hover p{
+    margin-bottom: 0;
 }
 .furniture-grid{
     display: grid;
@@ -499,10 +504,20 @@ body{
     gap: 0.7vw;
 }
 .furniture-filters section{
-    margin-bottom: 1.56vw;
+    margin-bottom: 1.5vw;
     display: flex;
     flex-direction: column;
     gap: var(--fontsmall);
+    overflow: hidden;
+}
+.furniture-filters section div{
+    height:12.5vw;
+}
+.furniture-filters section:has(.hidefilter) div{
+    height: 0px;
+}
+.furniture-filters section:has(.hidefilter){
+    margin-bottom: 0.5vw;
 }
 .furniture-filters section div{
     display: flex;
