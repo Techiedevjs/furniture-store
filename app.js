@@ -152,7 +152,6 @@ pages.map((p) => {
     const {tab, name, page} = p
     tab.addEventListener('click', () => {
         if(name === 'home'){
-            document.querySelector('.special').classList.add('hide-element')
             document.querySelector('.homepage').classList.remove('hide-element')
         }
         tab.classList.add('pressed');
@@ -204,11 +203,6 @@ const showSearch = () => {
 const cancelSearch = () => {
     document.querySelector('.search').classList.remove('showsearch')
     document.querySelector('.search .flexlittle').classList.add('hide')
-}
-const showSpecialOffers = () => {
-    document.querySelector('.special').classList.remove('hide-element')
-    document.querySelector('.homepage').classList.add('hide-element')
-    document.querySelector('.search').classList.add('hide')
 }
 const pushSpecialOffers = (data) => {
     document.querySelector('.specialoffers').innerHTML = "";
