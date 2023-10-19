@@ -115,15 +115,20 @@ let allItems = [
         specialOffer: true
     },
 ]
-
+const profile = {
+    firstName: "Kurt",
+    lastName: "achmed",
+    lixBalance: 15500,
+}
+document.querySelector('.lix-balance').innerHTML = profile.lixBalance;
 document.querySelectorAll('.profile-name').forEach(elem => {
     elem.innerHTML = profile.firstName + " " + profile.lastName;
 })
 const openProfileMenu = () => {
-    document.querySelector('.shopping-cart').classList.remove('hide-element')
+    document.querySelector('.shopping-cart').classList.remove('hidecart')
 }
 const closeCart = () => {
-    document.querySelector('.shopping-cart').classList.add('hide-element')
+    document.querySelector('.shopping-cart').classList.add('hidecart')
 }
 const pages = [
     {
@@ -188,6 +193,12 @@ const searchItems = () => {
         } else {
             pushDecorations(filtered);
         }
+    } else {
+        let homesearch = document.querySelector('.home-search')
+        searchvalue ? document.querySelector('.search-value').innerHTML = '"' + searchvalue + '"' : document.querySelector('.search-value').innerHTML = ""
+        filtered = allItems.filter((item) => item.name.toLowerCase().includes(searchvalue.toLowerCase()));
+        pushHomeSearchContents(filtered)
+        searchvalue ? homesearch.classList.remove('hide-element') : homesearch.classList.add('hide-element');
     }
 }
 const toggleFilter = (elem) => {
@@ -203,6 +214,8 @@ const showSearch = () => {
 const cancelSearch = () => {
     document.querySelector('.search').classList.remove('showsearch')
     document.querySelector('.search .flexlittle').classList.add('hide')
+    pushDecorations(allItems);
+    pushFurnitures(allItems);
 }
 const pushSpecialOffers = (data) => {
     document.querySelector('.specialoffers').innerHTML = "";
@@ -228,13 +241,13 @@ const pushSpecialOffers = (data) => {
 const pushFurnitures = (data) => {
     document.querySelector('.furnitures').innerHTML = ""
     data.map((item) => {
-        const {id, type, imageUrl, name, discountedPrice, currentPrice, category} = item;
+        const {id, type, imageUrl, name, specialOffer, discountedPrice, currentPrice, category} = item;
         if(type === 'furniture'){
             document.querySelector('.furnitures').innerHTML += `
             <section class="offer">
                 <div>
-                    <h3>$ ${discountedPrice}</h3>
-                    <h5>$ ${currentPrice}</h5>
+                    <h3>$ ${ specialOffer ? discountedPrice : currentPrice}</h3>
+                    <h5> ${specialOffer ? '$' + currentPrice : ''}</h5>
                 </div>    
                 <div>
                     <img src=${imageUrl} alt="item" class="item-image">
@@ -249,13 +262,13 @@ const pushFurnitures = (data) => {
 const pushDecorations = (data) => {
     document.querySelector('.decorations').innerHTML = ""
     data.map((item) => {
-        const {id, type, imageUrl, name, discountedPrice, currentPrice, category} = item;
+        const {id, type, imageUrl, name, specialOffer, discountedPrice, currentPrice, category} = item;
         if(type === 'decoration'){
             document.querySelector('.decorations').innerHTML += `
             <section class="offer">
                 <div>
-                    <h3>$ ${discountedPrice}</h3>
-                    <h5>$ ${currentPrice}</h5>
+                    <h3>$ ${specialOffer ? discountedPrice : currentPrice}</h3>
+                    <h5> ${specialOffer ? '$' + currentPrice : ''}</h5>
                 </div>    
                 <div>
                     <img src=${imageUrl} alt="item" class="item-image">
@@ -267,25 +280,50 @@ const pushDecorations = (data) => {
         }
     })
 }
+const pushHomeSearchContents = (data) => {
+    document.querySelector('.search-content').innerHTML = "";
+    data.map((item) => {
+        const {id, type, imageUrl, name, specialOffer, discountedPrice, currentPrice} = item;
+        document.querySelector('.search-content').innerHTML += `
+            <section class="offer">
+                <div>
+                    <h3>$ ${ specialOffer ? discountedPrice : currentPrice}</h3>
+                    <h5> ${specialOffer ? '$' + currentPrice : ''}</h5>
+                </div>    
+                <div>
+                    <img src=${imageUrl} alt="item" class="item-image">
+                </div>
+                <p>${name}</p>
+                <button onclick="addToCart('${id}')">ADD TO CART</button>
+            </section>
+        `
+    })
+}
 let cartItems = []
 let cartTotal = 0
 const updateCartTotal = () => {
     cartTotal = 0
-    cartItems.map((item) => cartTotal += item.discountedPrice)
-    document.querySelector('.carttotal').innerHTML = '$ ' + cartTotal
+    cartItems.map((item) => {
+        if(item.specialOffer){
+            cartTotal += item.discountedPrice
+        } else {
+            cartTotal += item.currentPrice
+        }
+    });
+    document.querySelector('.carttotal').innerHTML = cartTotal;
 }
 updateCartTotal()
 const pushCartItems = (data) => {
     document.querySelector('.cart-items').innerHTML = ""
     data.map((item) => {
-        const {name, imageUrl, discountedPrice, id} = item
+        const {name, imageUrl, discountedPrice, specialOffer, currentPrice, id} = item
         document.querySelector('.cart-items').innerHTML += `
         <div class="cart-item item-${id}">
             <img src="${imageUrl}" alt="item">
             <section>
                 <div>
                     <p class="cap">${name}</p>
-                    <h5>$ ${discountedPrice}</h5>
+                    <h5>$ ${specialOffer ? discountedPrice : currentPrice}</h5>
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" onclick="removeFromCart('${id}')" width="20" height="22" viewBox="0 0 20 22" fill="none">
                     <path opacity="0.5" d="M3.75 22C3.0625 22 2.47396 21.7606 1.98438 21.2819C1.49479 20.8032 1.25 20.2278 1.25 19.5556V3.66667H0V1.22222H6.25V0H13.75V1.22222H20V3.66667H18.75V19.5556C18.75 20.2278 18.5052 20.8032 18.0156 21.2819C17.526 21.7606 16.9375 22 16.25 22H3.75ZM6.25 17.1111H8.75V6.11111H6.25V17.1111ZM11.25 17.1111H13.75V6.11111H11.25V17.1111Z" fill="#878787"/>
@@ -294,6 +332,11 @@ const pushCartItems = (data) => {
         </div>
         `
     })
+    if(cartTotal > profile.lixBalance){
+        document.querySelector('.cart-items').innerHTML += `
+        <p class="message">There isn't enough money to buy these items!</p>
+        `
+    }
 }
 const removeFromCart = (id) => {
     document.querySelector(`.item-${id}`).classList.add('hideprofile')
@@ -301,7 +344,7 @@ const removeFromCart = (id) => {
     updateCartTotal(cartTotal)
     setTimeout(() => {
         pushCartItems(cartItems);
-    }, 3000);
+    }, 1000);
     if(cartItems.length){
         document.querySelector('.shopping-cart button').classList.remove('hide')
     } else {
@@ -320,7 +363,7 @@ const addToCart = (id) => {
         pushCartItems(cartItems)
         setTimeout(() => {
             cancelCartPopUp()
-        }, 3000);
+        }, 1500);
     }
     if(cartItems.length){
         document.querySelector('.shopping-cart button').classList.remove('hide')
@@ -332,9 +375,11 @@ const cancelCartPopUp = () => {
     document.querySelector('.added-to-cart').classList.add('hideprofile');
 }
 const proceedToBuy = () => {
-    alert("Transaction in progress")
-    console.log(cartItems)
-    closeCart()
+    if(cartTotal <= profile.lixBalance){
+        alert("Transaction in progress")
+        console.log(cartItems)
+        closeCart()
+    }
 }
 let currentFilter = {
     cat: "",
