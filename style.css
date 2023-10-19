@@ -2,6 +2,10 @@
     font-family: 'Jaapokki';
     src: url(./Jaapokki-Regular.otf);
 }
+@font-face {
+    font-family: 'SF Pro Text';
+    src: url(./SFProText.ttf);
+}
 ::-webkit-scrollbar {
     width: 0;
 }
@@ -35,7 +39,7 @@ button{
     font-size: var(--fontxsmall);
 }
 .fxxs{
-    font-size: calc(0.9 * var(--fontsmall));
+    font-size: 0.625vw;
 }
 .fs{
     font-size: var(--fontsmall);
@@ -91,6 +95,12 @@ button{
     pointer-events: none;
     transform: translateY(30vw);
 }
+.hidecart{
+    opacity: 0;
+    position: absolute !important;
+    pointer-events: none;
+    transform: translateY(1rem);
+}
 .hide-display{
     opacity: 0;
     position: absolute;
@@ -100,7 +110,6 @@ button{
 .hide{
     opacity: 0;
     display: none;
-    /* position: absolute; */
     pointer-events: none;
     transform: translateX(-10px) !important;
 }
@@ -168,7 +177,7 @@ body{
     border-radius: var(--radius);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
 }
 .container header{
@@ -179,6 +188,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: var(--radius) var(--radius) 0 0;
 }
 .container header svg{
     width: 3.07vw;
@@ -296,6 +306,13 @@ body{
     width: 1.67vw;
     aspect-ratio: 1/1;
 }
+.cart .lix{
+    width: 0.7vw;
+    aspect-ratio: 14/12;
+}
+.cart .flexlittle{
+    gap: 0.2vw;
+}
 .container main{
     flex: 1;
     position: relative;
@@ -314,7 +331,7 @@ body{
     width: 100%;
     height: 100%;
 }
- .heroimage img{
+.heroimage img{
     width: 44.6vw;
     height: 40vw;
     bottom: -10%;
@@ -361,7 +378,8 @@ body{
 .shopping-cart{
     background-color: #EBE8E4;
     position: absolute;
-    height: 38vw;
+    height: 37.1vw;
+    border-radius: 0 0 var(--radius) 0;
     top: 2.3vw;
     right: 0;
     width: 21vw;
@@ -419,7 +437,17 @@ body{
     height: 33.2vw;
     overflow-y: scroll;
 }
-.specialoffers{
+.home-search{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    overflow-y: scroll;
+    background-color: #E4E0DA;
+}
+.specialoffers, .search-content{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.7vw;
@@ -446,6 +474,7 @@ body{
     color: #A0A0A0;
     text-align: right;
     font-size: 0.73vw;
+    height: var(--fontsmall);
     font-weight: 700;
     line-height: 104.5%;
     letter-spacing: 0.35px;
@@ -485,7 +514,7 @@ body{
     letter-spacing: 1.84px;
     cursor: pointer;
 }
-.offer button:hover{
+.offer button:hover, .shopping-cart button:hover{
     background: #B39ABD;
     color: #2B2B2B;
 }
@@ -511,7 +540,7 @@ body{
     overflow: hidden;
 }
 .furniture-filters section div{
-    height:12.5vw;
+    height:11.5vw;
 }
 .furniture-filters section:has(.hidefilter) div{
     height: 0px;
@@ -661,6 +690,46 @@ body{
 .added-to-cart img{
     width: 4.3vw;
     aspect-ratio: 1/1;
+}
+.message{
+    color: #B73C40;
+    font-size: var(--fontsmall);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 114%;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
+}
+.profile{
+    position: absolute;
+    right: 2vw;
+    top: -3.1vw;
+    font-family: 'SF Pro Text';
+    font-weight: 500;
+    gap: var(--fontxsmall);
+}
+.profile-img-cont{
+    width: 1.667vw;
+    height: 1.667vw;
+    border-radius: 50%;
+    border: 0.1vw solid rgba(255, 255, 255, 0.25);
+}
+.profile-img-cont img{
+    width: 100%;
+    height: 100%;
+}
+.profile-name{
+    color: #FFF;
+    text-transform: capitalize;
+}
+.profile .fxxs{
+    color: rgba(255, 255, 255, 0.65);
+    gap: 0.2vw;
+    align-items: center;
+}
+.profile .fxxs svg{
+    width: 0.489vw;
+    aspect-ratio: 9.39/7.807;
 }
 @media screen and (min-width: 1920px) {
     ::-webkit-scrollbar {
