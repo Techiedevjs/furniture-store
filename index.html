@@ -16,7 +16,24 @@
             <button>Esc</button> 
             <span class="grey ls mediumbold">BACK</span>
         </div>
-        <div class="container">
+        <div class="container ">
+            <div class="flexsmall profile">
+                <div class="flexlittle profile-img-cont">
+                    <img src="images/profile.svg" alt="profile" class="profile-image">
+                </div>
+                <section class="fxs">
+                    <p class="profile-name fxs"></p>
+                    <p class="fxxs flexlittle">
+                        Wallet: $<span class="lix-balance bold">7500</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="8" viewBox="0 0 10 8" fill="none">
+                            <path d="M7.48746 6.13008H9.2639L5.81596 0.447388L4.92188 1.91352L7.48746 6.13008Z" fill="white" fill-opacity="0.65"/>
+                            <path d="M1.84626 6.25793L4.41126 2.04084H4.39953L5.52578 0.192749L3.76166 0.192749L0.0698242 6.25793H1.84626Z" fill="white" fill-opacity="0.65"/>
+                            <path d="M0 6.55518L1.27693 7.99986L8.21912 7.99986L9.3911 6.55518L0 6.55518Z" fill="white" fill-opacity="0.65"/>
+                            <path d="M5.8983 5.54614L4.70228 3.56018L3.49512 5.53542L5.8983 5.54614L4.70228 3.56018L3.49512 5.53542L5.8983 5.54614Z" fill="white" fill-opacity="0.65"/>
+                          </svg>
+                    </p>
+                </section>
+            </div>
             <header class="inter fs bold">
                 <svg xmlns="http://www.w3.org/2000/svg" width="59" height="13" viewBox="0 0 59 13" fill="none">
                     <circle cx="6.5" cy="6.5" r="6.5" fill="#EC5E41"/>
@@ -25,6 +42,9 @@
                 </svg>
                 Ember Furniture Store
             </header>
+            <section>
+                
+            </section>
             <nav>
                 <div class="logo">EMBER</div>
                 <div class="absnav">
@@ -52,7 +72,15 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                         <path d="M27 5H5C4.46957 5 3.96086 5.21071 3.58579 5.58579C3.21071 5.96086 3 6.46957 3 7V25C3 25.5304 3.21071 26.0391 3.58579 26.4142C3.96086 26.7893 4.46957 27 5 27H27C27.5304 27 28.0391 26.7893 28.4142 26.4142C28.7893 26.0391 29 25.5304 29 25V7C29 6.46957 28.7893 5.96086 28.4142 5.58579C28.0391 5.21071 27.5304 5 27 5ZM16 20C14.4092 19.9983 12.884 19.3657 11.7592 18.2408C10.6343 17.116 10.0017 15.5908 10 14C10 13.7348 10.1054 13.4804 10.2929 13.2929C10.4804 13.1054 10.7348 13 11 13C11.2652 13 11.5196 13.1054 11.7071 13.2929C11.8946 13.4804 12 13.7348 12 14C12 15.0609 12.4214 16.0783 13.1716 16.8284C13.9217 17.5786 14.9391 18 16 18C17.0609 18 18.0783 17.5786 18.8284 16.8284C19.5786 16.0783 20 15.0609 20 14C20 13.7348 20.1054 13.4804 20.2929 13.2929C20.4804 13.1054 20.7348 13 21 13C21.2652 13 21.5196 13.1054 21.7071 13.2929C21.8946 13.4804 22 13.7348 22 14C21.9983 15.5908 21.3657 17.116 20.2408 18.2408C19.116 19.3657 17.5908 19.9983 16 20ZM5 9V7H27V9H5Z" fill="#567367"/>
                     </svg>
-                    <p class="fs bold carttotal"></p>
+                    <section class="flexlittle">
+                        <p class="fs bold carttotal"></p>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="lix" width="14" height="12" viewBox="0 0 14 12" fill="none">
+                            <path d="M11.1391 9.02551H13.7819L8.65239 0.571411L7.32227 2.75257L11.1391 9.02551Z" fill="#4A4A4A"/>
+                            <path d="M2.7468 9.21564L6.56273 2.9419H6.54529L8.22081 0.192505L5.59632 0.192505L0.104004 9.21564H2.7468Z" fill="#4A4A4A"/>
+                            <path d="M0 9.65796L1.89968 11.8072L12.2275 11.8072L13.9711 9.65796L0 9.65796Z" fill="#4A4A4A"/>
+                            <path d="M8.7749 8.15678L6.99559 5.20227L5.19971 8.14082L8.7749 8.15678L6.99559 5.20227L5.19971 8.14082L8.7749 8.15678Z" fill="#4A4A4A"/>
+                        </svg>
+                    </section>
                 </div>
             </nav>
             <main>
@@ -79,6 +107,10 @@
                             <h2 class="center pageheader">  SPECIAL OFFERS </h2>
                             <div class="specialoffers"></div>
                         </section>
+                    </div>
+                    <div class="home-search hide-element page">
+                        <h2 class="center pageheader search-value"> </h2>
+                        <div class="search-content"></div>
                     </div>
                 </div>
                 
@@ -285,13 +317,13 @@
                 </section>
             </main>
             <!-- SHOPPING CART -->
-            <section class="shopping-cart hide-element">
+            <section class="shopping-cart hidecart">
                 <div class="relative">
                     <svg xmlns="http://www.w3.org/2000/svg" class="cancel" onclick="closeCart()" width="21" height="21" viewBox="0 0 21 21" fill="none">
                         <path opacity="0.3" d="M20.3168 2.80602L18.2155 0.704727L10.5107 8.40945L2.80602 0.704727L0.704726 2.80602L8.40945 10.5107L0.704727 18.2155L2.80602 20.3168L10.5107 12.612L18.2155 20.3168L20.3168 18.2155L12.612 10.5107L20.3168 2.80602Z" fill="#4A4A4A"/>
                     </svg>
                     <section class="cart-items"></section>
-                    <button class="hide" onclick="proceedToBuy()">PROCEED TO BUY</button>
+                    <button class="hide" onclick="proceedToBuy()">PURCHASE</button>
                 </div>
             </section>
         </div>
