@@ -216,6 +216,8 @@ const cancelSearch = () => {
     document.querySelector('.search .flexlittle').classList.add('hide')
     pushDecorations(allItems);
     pushFurnitures(allItems);
+    document.querySelector('.home-search').classList.add('hide-element')
+    document.querySelector('#searchitems').value = "";
 }
 const pushSpecialOffers = (data) => {
     document.querySelector('.specialoffers').innerHTML = "";
